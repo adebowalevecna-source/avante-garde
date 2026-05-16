@@ -369,23 +369,31 @@
 
         // Hybrid Device Link Generator Engine
         function getWhatsAppBaseUrl() {
-            // Checks if user is running on mobile device or desktop browser
-            const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-            return isMobile ? "https://whatsapp.com" : "https://whatsapp.com";
-        }
+    // Checks if user is running on mobile device or desktop browser
+    const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+    return "https://wa.me";
+     }
+
+
+
+
+    
 
         function sendWhatsAppOrder(productName) {
-            const baseUrl = getWhatsAppBaseUrl();
-            const message = `Hello AVANT-GARDE, I want to order the [${productName}]. Please provide payment details.`;
-            const finalUrl = `${baseUrl}?phone=${WHATSAPP_NUMBER}&text=${encodeURIComponent(message)}`;
-            window.open(finalUrl, '_blank');
-        }
+    const baseUrl = getWhatsAppBaseUrl();
+    const message = `Hello AVANT-GARDE, I want to order the [${productName}]. Please provide payment details.`;
+    // MAKE SURE THIS HAS A FORWARD SLASH (/) BEFORE ${WHATSAPP_NUMBER}
+    const finalUrl = `${baseUrl}/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
+    window.open(finalUrl, '_blank');
+}
 
-        function sendWhatsAppGeneral() {
-            const baseUrl = getWhatsAppBaseUrl();
-            const finalUrl = `${baseUrl}?phone=${WHATSAPP_NUMBER}`;
-            window.open(finalUrl, '_blank');
-        }
+function sendWhatsAppGeneral() {
+    const baseUrl = getWhatsAppBaseUrl();
+    // MAKE SURE THIS HAS A FORWARD SLASH (/) BEFORE ${WHATSAPP_NUMBER}
+    const finalUrl = `${baseUrl}/${WHATSAPP_NUMBER}`;
+    window.open(finalUrl, '_blank');
+}
+
 
         // Core Single Page Routing Architecture
         function switchPage(pageId) {
